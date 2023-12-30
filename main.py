@@ -8,7 +8,7 @@ from PyQt5.QtCore import Qt
 class Circle(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('circle.ui', self)
+        uic.loadUi('UI.ui', self)
         self.draw = False
         self.drawCircle.clicked.connect(self.new_circle)
 
