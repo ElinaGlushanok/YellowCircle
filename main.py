@@ -1,14 +1,12 @@
 import sys
 from random import randint
-from PyQt5 import uic
+from CircleClass import CircleClass
 from PyQt5.QtWidgets import  QMainWindow, QApplication
-from PyQt5.QtGui import QPainter, QBrush, QColor
-from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPainter, QColor
 
-class Circle(QMainWindow):
+class Circle(CircleClass):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
         self.draw = False
         self.drawCircle.clicked.connect(self.new_circle)
 
@@ -19,10 +17,13 @@ class Circle(QMainWindow):
     def paintEvent(self, event):
         if self.draw:
             painter = QPainter(self)
-            painter.setPen(QColor(255, 255, 0))
-            painter.setBrush(QColor(255, 255, 0))
-            r = randint(1, 300)
-            painter.drawEllipse(250, 250, r, r)
+            r = randint(0, 255)
+            g = randint(0, 255)
+            b = randint(0, 255)
+            painter.setPen(QColor(r, g, b))
+            painter.setBrush(QColor(r, g, b))
+            rad = randint(1, 200)
+            painter.drawEllipse(100, 150, rad, rad)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
